@@ -24,9 +24,12 @@ namespace LifeSpot
             }
 
             app.UseRouting();
+           
 
             app.UseEndpoints(endpoints =>
             {
+
+                //подключается стартовая страница
                 endpoints.MapGet("/", async context => //MapGet() - это Конечная точка — это то, что можно:
                                                        //-выбрать путем сопоставления URL-адреса и метода HTTP
                                                        //-выполнить путем запуска делегата.
@@ -34,6 +37,23 @@ namespace LifeSpot
                     var viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "index.html");
                     var html = await File.ReadAllTextAsync(viewPath);
                     await context.Response.WriteAsync(html);
+                });
+
+                //для подключения стилей
+                endpoints.MapGet("/wwwroot/CSS/StyleSheet.css", async context =>
+                {
+                    // по аналогии со страницей Index настроим на нашем сервере путь до страницы со стилями, чтобы браузер знал, откуда их загружать
+                    var cssPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "CSS", "StyleSheet.css");
+                    var css = await File.ReadAllTextAsync(cssPath);
+                    await context.Response.WriteAsync(css);
+                });
+                //для подключения стилей
+                endpoints.MapGet("/wwwroot/JS/JavaScript1.js", async context =>
+                {
+                    // по аналогии со страницей Index настроим на нашем сервере путь до страницы со стилями, чтобы браузер знал, откуда их загружать
+                    var cssPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "JS", "JavaScript1.js");
+                    var css = await File.ReadAllTextAsync(cssPath);
+                    await context.Response.WriteAsync(css);
                 });
             });
         }
