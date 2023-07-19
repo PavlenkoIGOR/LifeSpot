@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>LifeSpot</title>
-    <link href="../wwwroot/CSS/StyleSheet.css" rel="stylesheet" type="text/css">
-    <script src="../wwwroot/JS/JavaScript1.js" rel="script" type="text/javascript"></script>
+    <link href="../wwwroot/CSS/MainPage.css" rel="stylesheet" type="text/css">
+    <script src="../wwwroot/JS/MainPage.js" rel="script" type="text/javascript"></script>
 </head>
 
 <body>
@@ -15,7 +15,11 @@
         <!--Параграф-->
         <p id="headerP"></p>
         <script>
-            document.getElementById("headerP").innerHTML = 'Покажем, что происходит прямо сейчас ' + new Date().toLocaleString();
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth();
+            var day = date.getDay();
+            document.getElementById("headerP").innerHTML = Покажем, что происходит прямо сейчас!(сегодня " + " " + day + "." + month + "." + year + ")";
         </script>
         <form>
             <input type="text" placeholder="Поиск трансляции по сайту">
@@ -24,13 +28,7 @@
     </header>
     <!--Сайд-бар страницы (пока все ссылки ведут на главную)-->
     <div id="asideMain">
-        <aside id="sidebar">
-            <div id="asideUpper"></div>
-            <div class="navbar" id="asideLower">
-                <button href="/">Все трансляции</button>
-                <button href="/">О проекте</button>
-            </div>
-        </aside>
+        <!--SIDEBAR-->
         <main>
             <div class="bordered">
                 <div class="video-container">
@@ -50,12 +48,7 @@
 
         </main>
     </div>
-
-    <!--Футер страницы находится под основной частью (body)-->
-    <footer>
-        <p>LifeSpot - все права защищены</p>
-        <p>Связаться с нами: contact@lifespot.ru</p>
-    </footer>
+    <!--FOOTER-->
 </body>
 
 </html>

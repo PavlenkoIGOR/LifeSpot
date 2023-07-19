@@ -5,7 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Include="wwwroot\CSS\StyleSheet.css" />
+      <None Include="wwwroot\CSS\MainPage.css" />
     </ItemGroup>
 
 </Project>
