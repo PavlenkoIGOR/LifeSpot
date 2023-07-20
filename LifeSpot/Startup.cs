@@ -45,7 +45,7 @@ namespace LifeSpot
                     });
 
                     //подключается страница TestingPage
-                    endpoints.MapGet("/TestingPage", async context => 
+                    endpoints.MapGet("/Views/TestingPage.html", async context => 
                     {
                         var TestingPagePath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "TestingPage.html");
                         var TestingPageHtml = new StringBuilder(await File.ReadAllTextAsync(TestingPagePath)).Replace("<!--SIDEBAR-->", sidebarHTML).Replace("<!--FOOTER-->", footerHTML);

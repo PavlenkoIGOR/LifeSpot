@@ -53,11 +53,18 @@ aside {
 
 
 #asideMain {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height:600px;
     display: inline-flex;
 }
 
 main {
+    display: inline;
     width: 100%;
+    height: 100%;
+    margin: 0;
 }
 
 .bordered {
