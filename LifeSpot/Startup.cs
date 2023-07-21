@@ -29,6 +29,7 @@ namespace LifeSpot
             // Загружаем отдельные элементы для вставки в шаблон: боковое меню и футер. Для этого создать новые файлы (в мойм случае MainPageFooter и MainPageSidebar)
             string footerHTML = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "Footer.html"));
             string sidebarHTML = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "Sidebar.html"));
+            string sidebarTestingPage = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "SidebarTestingPage.html"));
 
             app.UseEndpoints(endpoints =>
                 {
@@ -44,15 +45,17 @@ namespace LifeSpot
                         await context.Response.WriteAsync(html.ToString());
                     });
 
+                    
                     //подключается страница TestingPage
                     endpoints.MapGet("/Views/TestingPage.html", async context => 
                     {
-                        var TestingPagePath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "TestingPage.html");
-                        var TestingPageHtml = new StringBuilder(await File.ReadAllTextAsync(TestingPagePath)).Replace("<!--SIDEBAR-->", sidebarHTML).Replace("<!--FOOTER-->", footerHTML);
+                        var TestingPagePath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "TestingPage.html"); 
+                        var TestingPageHtml = new StringBuilder(await File.ReadAllTextAsync(TestingPagePath)).Replace("<!--SIDEBAR-->", sidebarTestingPage).Replace("<!--FOOTER-->", footerHTML);
 
                         // Загружаем шаблон страницы, вставляя в него элементы
                         await context.Response.WriteAsync(TestingPageHtml.ToString());
                     });
+                    
 
                     //для подключения стилей
                     endpoints.MapGet("/wwwroot/CSS/MainPage.css", async context =>
@@ -62,7 +65,8 @@ namespace LifeSpot
                         var css = await File.ReadAllTextAsync(cssPath);
                         await context.Response.WriteAsync(css);
                     });
-                //для подключения JS-файла
+
+                    //для подключения JS-файла
                     endpoints.MapGet("/wwwroot/JS/MainPage.js", async context =>
                     {
                     // по аналогии со страницей Index настроим на нашем сервере путь до страницы со стилями, чтобы браузер знал, откуда их загружать
