@@ -74,6 +74,15 @@ namespace LifeSpot
                         var js = await File.ReadAllTextAsync(jsPath);
                         await context.Response.WriteAsync(js);
                     });
+
+                    //для подключения JS-файла TestingPage
+                    endpoints.MapGet("/wwwroot/JS/TestingPage.js", async context =>
+                    {
+                        // по аналогии со страницей Index настроим на нашем сервере путь до страницы со стилями, чтобы браузер знал, откуда их загружать
+                        var jsPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "JS", "testingPage.js");
+                        var js = await File.ReadAllTextAsync(jsPath);
+                        await context.Response.WriteAsync(js);
+                    });
                 });
         }
     }
