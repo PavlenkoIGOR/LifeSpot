@@ -66,6 +66,16 @@ namespace LifeSpot
                         await context.Response.WriteAsync(css);
                     });
 
+
+                    //подключение CSS стилей TestingPage
+                    endpoints.MapGet("/wwwroot/CSS/TestingPage.css", async context =>
+                    {
+                        // по аналогии со страницей Index настроим на нашем сервере путь до страницы со стилями, чтобы браузер знал, откуда их загружать
+                        var cssPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "CSS", "TestingPage.css");
+                        var css = await File.ReadAllTextAsync(cssPath);
+                        await context.Response.WriteAsync(css);
+                    });
+
                     //для подключения JS-файла
                     endpoints.MapGet("/wwwroot/JS/MainPage.js", async context =>
                     {
@@ -79,7 +89,7 @@ namespace LifeSpot
                     endpoints.MapGet("/wwwroot/JS/TestingPage.js", async context =>
                     {
                         // по аналогии со страницей Index настроим на нашем сервере путь до страницы со стилями, чтобы браузер знал, откуда их загружать
-                        var jsPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "JS", "testingPage.js");
+                        var jsPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "JS", "TestingPage.js");
                         var js = await File.ReadAllTextAsync(jsPath);
                         await context.Response.WriteAsync(js);
                     });

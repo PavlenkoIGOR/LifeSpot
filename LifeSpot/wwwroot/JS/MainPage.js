@@ -5,9 +5,6 @@ if (p < 18) {
     window.location.href = "http://www.google.com";
     //window.close(); - просто закрыть окно
 }
-else
-{
-    alert("Добро пожаловать!" + new Date().toLocaleString());
-}
-
-
+else {
+    alert("Добро пожаловать! " + new Date().toLocaleString());
+};

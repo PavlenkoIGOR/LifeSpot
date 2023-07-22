@@ -8,19 +8,16 @@
     <script defer src="../wwwroot/JS/TestingPage.js" type="text/javascript"></script>
 </head>
 <body>
-    <!--Хедер страницы находится сразу над тегом body-->
     <header id="headerForTest">
         <h1>LifeSpot - тестовая страница</h1>
         <p>Здесь можно экспериментировать с кодом</p>
-        
     </header>
-    <!--Сайд-бар страницы (пока все ссылки ведут на главную)-->
     <div id="asideMain">
         <!--SIDEBAR-->
         <main>
             <div class="bordered">
-                <input type="text" oninput="/* Обработчик ввода текста */" size=50%>
-                <button width ="200px" height="50px" onclick="out">Показать</button>
+                <input id="inputBordered" type="text" oninput="/* Обработчик ввода текста */" size=50%>
+                <button width="200px" height="50px" onclick="outputData();">Показать</button>
             </div>
         </main>
     </div>
