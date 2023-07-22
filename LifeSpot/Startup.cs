@@ -26,7 +26,7 @@ namespace LifeSpot
 
             app.UseRouting();
 
-            // Загружаем отдельные элементы для вставки в шаблон: боковое меню и футер. Для этого создать новые файлы (в мойм случае MainPageFooter и MainPageSidebar)
+            //Загружаем отдельные элементы для вставки в шаблон: боковое меню и футер. Для этого создать новые файлы (в моем случае MainPageFooter и  MainPageSidebar)
             string footerHTML = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "Footer.html"));
             string sidebarHTML = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "Sidebar.html"));
             string sidebarTestingPage = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "SidebarTestingPage.html"));
