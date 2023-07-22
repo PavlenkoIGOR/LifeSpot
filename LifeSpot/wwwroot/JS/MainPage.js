@@ -1,10 +1,9 @@
-﻿var p = prompt('Введите Ваш возраст: ');
-if (p < 18) {
-    var r = 18 - p;
-    alert('Ваш возраст меньше 18! Встретимся через ' + r + " лет!");
-    window.location.href = "http://www.google.com";
-    //window.close(); - просто закрыть окно
+﻿
+
+function SeekAndShow() {
+    let elements = document.getElementsByClassName("video-container");
+    // Пробежимся в цикле и выведем все в консоль
+    for (let i = 0; i <= elements.length; i++) {
+        console.log(elements[i])
+    }
 }
-else {
-    alert("Добро пожаловать! " + new Date().toLocaleString());
-};
