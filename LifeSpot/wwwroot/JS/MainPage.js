@@ -1,4 +1,7 @@
-﻿function SeekAndShow() {
+﻿
+
+
+function SeekAndShow() {
     // Получим все контейнеры с видео
     let elements = document.getElementsByClassName("video-container");
 
