@@ -7,7 +7,11 @@
     <script src="../wwwroot/JS/MainPage.js" rel="script" type="text/javascript"></script>
 </head>
 
-<body onload="javascript: ExpressionCheckAge();">
+<body onload="
+            // Создадим и обработаем сессию
+            let session = ExpressionCheckAge();
+            // Логируем в консоль.
+            sessionLog(session);">
     <div id="allWindow"></div>
         <!--Хедер страницы находится сразу над тегом body-->
         <header id="headerForTest">
@@ -25,10 +29,13 @@
                 </script>
             </p>
             <form>
-                <input id="inputMain" type="text" placeholder="Поиск трансляции по сайту" oninput="javascript: SeekAndShow();" size="50%"/>
+                <input id="inputMain" type="text" placeholder="Поиск трансляции по сайту" oninput="javascript: SeekAndShow(this.value.toLowerCase());" size="50%"/>
 
                 <button id="searchButton" type="submit" onclick="">Найти</button>
             </form>
+            <script>
+
+            </script>
         </header>
         <!--Сайд-бар страницы (пока все ссылки ведут на главную)-->
         <div id="asideMain">

@@ -2,7 +2,18 @@
 какой оператор был использован (var, let, const).*/
 
 /*Функции, объявленные как Function Declaration, создаются интерпретатором до выполнения кода, поэтому их можно вызвать до объявления.*/
-var ExpressionCheckAge = function () {
+
+
+
+// Логирование сессии (объявлено через expression)
+let sessionLog = function logSession(session) {
+    // Вывод в консоль
+    for (let result of session) {
+        console.log(result)
+    }
+}
+
+function ExpressionCheckAge () {  //sessionhandler
     // создадим объект Map для хранения сессии
     let session = new Map();
     // Сохраним UserAgent. Window.navigator.userAgent - инфо о браузере
@@ -30,10 +41,15 @@ var ExpressionCheckAge = function () {
     for (let result of session) {
         console.log(result)
     }
+    // Теперь мы возвращаем объект сессии
+    return session;
 }
 
-function SeekAndShow() {
+//функция (или объект в JS) для поиска видео
+function SeekAndShow(somethingInput) {
     /*Код ниже отрабатывает каждый раз при вводе символа в input*/
+
+
     // Сохраняем текст пользовательского запроса.
     let inputString = document.getElementsByTagName('input')[0].value.toLowerCase();
     // Находим контейнеры с видео, которые необходимо фильтровать
@@ -43,7 +59,7 @@ function SeekAndShow() {
         // Вытаскиваем текст описания видео, которое необходимо отфильтровать
         let videoText = elements[i].querySelector('.video-title').innerText;
         // Выполняем фильтрацию, сравнивая значения в нижнем регистре
-        if (!videoText.toLowerCase().includes(inputString.toLowerCase())) {
+        if (!videoText.toLowerCase().includes(somethingInput.toLowerCase())) {
             // Описание
             elements[i].style.display = 'none';
         } else {
