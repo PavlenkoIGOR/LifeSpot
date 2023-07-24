@@ -1,4 +1,8 @@
-﻿function CheckAge() {
+﻿/*Function Expression - переменной присваивается функция. Функции, объявленные как FE, ведут себя по-разному в зависимости от того, 
+какой оператор был использован (var, let, const).*/
+
+/*Функции, объявленные как Function Declaration, создаются интерпретатором до выполнения кода, поэтому их можно вызвать до объявления.*/
+var ExpressionCheckAge = function () {
     // создадим объект Map для хранения сессии
     let session = new Map();
     // Сохраним UserAgent. Window.navigator.userAgent - инфо о браузере
@@ -27,25 +31,24 @@
         console.log(result)
     }
 }
-/*
-function HideAllWindow() {
-    document.getElementById('allWindow').style.display = 'none';
-}
-*/
+
 function SeekAndShow() {
-    // Получим все контейнеры с видео
-    let elements = document.getElementsByClassName("video-container");
-
-    // Пробежимся в цикле по контейнерам
+    /*Код ниже отрабатывает каждый раз при вводе символа в input*/
+    // Сохраняем текст пользовательского запроса.
+    let inputString = document.getElementsByTagName('input')[0].value.toLowerCase();
+    // Находим контейнеры с видео, которые необходимо фильтровать
+    let elements = document.getElementsByClassName('video-container');
+    // Пробегаемся по контейнерам
     for (let i = 0; i <= elements.length; i++) {
-
-        // Получим всё что внутри контейнера
-        let childElements = elements[i];
-        // Получим элемент, содержащий описание видео
-        // Он у нас единственный с тегом h3, снова воспользуемся поиском по тегу,
-        let videoDescription = childElements.getElementsByTagName('h3')[0];
-        // Выведем его текст на консоль
-        console.log(videoDescription.innerText);
+        // Вытаскиваем текст описания видео, которое необходимо отфильтровать
+        let videoText = elements[i].querySelector('.video-title').innerText;
+        // Выполняем фильтрацию, сравнивая значения в нижнем регистре
+        if (!videoText.toLowerCase().includes(inputString.toLowerCase())) {
+            // Описание
+            elements[i].style.display = 'none';
+        } else {
+            elements[i].style.display = 'inline-block';
+        }
     }
 };
 
