@@ -7,67 +7,69 @@
     <script src="../wwwroot/JS/MainPage.js" rel="script" type="text/javascript"></script>
 </head>
 
-<body onload="
-            // Создадим и обработаем сессию
-            let session = ExpressionCheckAge();
-            // Логируем в консоль.
-            sessionLog(session);">
+<body onload="javascript: DeclarationCheckAge()">
     <div id="allWindow"></div>
-        <!--Хедер страницы находится сразу над тегом body-->
-        <header id="headerForTest">
-            <!--Заголовок страницы-->
-            <h1>Big Brother is watching!</h1>
-            <!--Параграф-->
-            <p id="headerP">
-                <script>
-                    const date = new Date();
-                    const year = date.getFullYear();
-                    const month = date.getMonth() + 1;
-                    const day = date.getDate();
-                    const currentDate = day + "." + month + "." + year;
-                    document.getElementById("headerP").innerHTML = "Покажем, что происходит прямо сейчас! А на календаре у нас " + currentDate;
-                </script>
-            </p>
-            <form>
-                <input id="inputMain" type="text" placeholder="Поиск трансляции по сайту" oninput="javascript: SeekAndShow(this.value.toLowerCase());" size="50%"/>
-
-                <button id="searchButton" type="submit" onclick="">Найти</button>
-            </form>
+    <script>
+        HandleSession();
+        sessionLog();
+    </script>
+    <!--Хедер страницы находится сразу над тегом body-->
+    <header id="headerForTest">
+        <!--Заголовок страницы-->
+        <h1>Big Brother is watching!</h1>
+        <!--Параграф-->
+        <p id="headerP">
             <script>
-
+                const date = new Date();
+                const year = date.getFullYear();
+                const month = date.getMonth() + 1;
+                const day = date.getDate();
+                const currentDate = day + "." + month + "." + year;
+                document.getElementById("headerP").innerHTML = `Покажем, что происходит прямо сейчас! А на календаре у нас ${currentDate}`;
             </script>
-        </header>
-        <!--Сайд-бар страницы (пока все ссылки ведут на главную)-->
-        <div id="asideMain">
-            <!--SIDEBAR-->
-            <main>
-                <div class="bordered">
-                    <div class="video-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/srlpC5tmhYs" title="Нью-Йорк" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <h3 class="video-title">Нью-Йорк, Брайант Парк</h3>
-                    </div>
-                    <div class="video-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/wCcMcaiRbhM" title="Санкт-Петербург" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <h3 class="video-title">Санкт-Петербург, Невский Проспект</h3>
-                    </div>
-                    <div class="video-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/JplMzss6_YE" title="Лондон" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <h3 class="video-title">Лондон, автобусный маршрут</h3>
-                    </div>
-                    <div class="video-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/w_DfTc7F5oQ" title="🔴 Venice Beach Live Camera · Los Angeles Live Stream · presented by the Venice V Hotel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        <h3 class="video-title">Лос-Анджелес, Venice Beach</h3>
-                    </div>
-                    <div class="video-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Mu0ts-GnNto" title="Online Camera Moscow Moskva river Веб-камера Москва река" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        <h3 class="video-title">Москва, Вид на Москву-реку</h3>
-                    </div>
+        </p>
+        <form>
+            <input id="inputMain" type="text" placeholder="Поиск трансляции по сайту" oninput="javascript: SeekAndShow();" size="50%" />
 
+            <button id="searchButton" type="submit" onclick="">
+                Найти
+            </button>
+        </form>
+        <script>
+
+        </script>
+    </header>
+    <!--Сайд-бар страницы (пока все ссылки ведут на главную)-->
+    <div id="asideMain">
+        <!--SIDEBAR-->
+        <main>
+            <div class="bordered">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/srlpC5tmhYs" title="Нью-Йорк" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <h3 class="video-title">Нью-Йорк, Брайант Парк</h3>
                 </div>
-            </main>
-        </div>
-        <!--FOOTER-->
-    
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/wCcMcaiRbhM" title="Санкт-Петербург" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <h3 class="video-title">Санкт-Петербург, Невский Проспект</h3>
+                </div>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/JplMzss6_YE" title="Лондон" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <h3 class="video-title">Лондон, автобусный маршрут</h3>
+                </div>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/w_DfTc7F5oQ" title="🔴 Venice Beach Live Camera · Los Angeles Live Stream · presented by the Venice V Hotel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <h3 class="video-title">Лос-Анджелес, Venice Beach</h3>
+                </div>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Mu0ts-GnNto" title="Online Camera Moscow Moskva river Веб-камера Москва река" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <h3 class="video-title">Москва, Вид на Москву-реку</h3>
+                </div>
+
+            </div>
+        </main>
+    </div>
+    <!--FOOTER-->
+
 </body>
 
 </html>
