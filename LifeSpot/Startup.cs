@@ -30,6 +30,7 @@ namespace LifeSpot
             string footerHTML = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "Footer.html"));
             string sidebarHTML = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "Sidebar.html"));
             string sidebarTestingPage = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "SidebarTestingPage.html"));
+            string sidebarAboutPage = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "SidebarAboutPage.html"));
 
             app.UseEndpoints(endpoints =>
                 {
@@ -55,9 +56,18 @@ namespace LifeSpot
                         // Загружаем шаблон страницы, вставляя в него элементы
                         await context.Response.WriteAsync(TestingPageHtml.ToString());
                     });
-                    
 
-                    //для подключения стилей
+                    //подключается страница AboutPage
+                    endpoints.MapGet("/Views/AboutPage.html", async context =>
+                    {
+                        var AboutPagePath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "AboutPage.html");
+                        var AboutPageHtml = new StringBuilder(await File.ReadAllTextAsync(AboutPagePath)).Replace("<!--SIDEBAR-->", sidebarAboutPage).Replace("<!--FOOTER-->", footerHTML);
+
+                        // Загружаем шаблон страницы, вставляя в него элементы
+                        await context.Response.WriteAsync(AboutPageHtml.ToString());
+                    });
+
+                    //для подключения стилей MainPage
                     endpoints.MapGet("/wwwroot/CSS/MainPage.css", async context =>
                     {
                     // по аналогии со страницей Index настроим на нашем сервере путь до страницы со стилями, чтобы браузер знал, откуда их загружать
@@ -76,7 +86,16 @@ namespace LifeSpot
                         await context.Response.WriteAsync(css);
                     });
 
-                    //для подключения JS-файла
+                    //подключение CSS стилей AboutPage
+                    endpoints.MapGet("/wwwroot/CSS/AboutPage.css", async context =>
+                    {
+                        // по аналогии со страницей Index настроим на нашем сервере путь до страницы со стилями, чтобы браузер знал, откуда их загружать
+                        var cssPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "CSS", "AboutPage.css");
+                        var css = await File.ReadAllTextAsync(cssPath);
+                        await context.Response.WriteAsync(css);
+                    });
+
+                    //для подключения JS-файла MainPage
                     endpoints.MapGet("/wwwroot/JS/MainPage.js", async context =>
                     {
                     // по аналогии со страницей Index настроим на нашем сервере путь до страницы со стилями, чтобы браузер знал, откуда их загружать
@@ -90,6 +109,14 @@ namespace LifeSpot
                     {
                         // по аналогии со страницей Index настроим на нашем сервере путь до страницы со стилями, чтобы браузер знал, откуда их загружать
                         var jsPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "JS", "TestingPage.js");
+                        var js = await File.ReadAllTextAsync(jsPath);
+                        await context.Response.WriteAsync(js);
+                    });
+                    //для подключения JS-файла AboutPage
+                    endpoints.MapGet("/wwwroot/JS/AboutPage.js", async context =>
+                    {
+                        // по аналогии со страницей Index настроим на нашем сервере путь до страницы со стилями, чтобы браузер знал, откуда их загружать
+                        var jsPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "JS", "AboutPage.js");
                         var js = await File.ReadAllTextAsync(jsPath);
                         await context.Response.WriteAsync(js);
                     });

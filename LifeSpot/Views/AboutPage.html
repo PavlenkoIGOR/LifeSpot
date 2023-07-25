@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LifeSpot</title>
+    <link href="stili.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <header id="headerForTest">
+        <!--Заголовок страницы-->
+        <h1>Big Brother is watching!</h1>
+        <!--Параграф-->
+        <p id="headerP">
+            <script>
+                                const date = new Date();
+                                const year = date.getFullYear();
+                                const month = date.getMonth() + 1;
+                                const day = date.getDate();
+                                const currentDate = day + "." + month + "." + year;
+                                document.getElementById("headerP").innerHTML = "Покажем, что происходит прямо сейчас! А на календаре у нас " + currentDate;
+            </script>
+        </p>
+    </header>
+    <!--Сайд-бар страницы (пока все ссылки ведут на главную)-->
+    <div id="asideMain">
+        <!--SIDEBAR-->
+
+        <main></main>
+    </div>
+
+    <!--FOOTER-->
+
+</body>
+
+</html>
