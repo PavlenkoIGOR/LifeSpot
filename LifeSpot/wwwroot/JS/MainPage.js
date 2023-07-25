@@ -49,10 +49,11 @@ let sessionLog = function logSession() {
 
 
 
-
-
-
-
+//функция, которая предлагает юзверям подписаться 
+function SubscribeNow()
+{
+    setTimeout(function () { confirm("А ну-ка, подпишись!"); }, 10000 );
+}
 
 
 //функция (или объект в JS) для поиска видео
