@@ -1,7 +1,10 @@
 ﻿body {
-    background-color: rgb(80, 10, 10);
+    position: absolute;
+    background-color: rgb(10, 10, 10);
     padding: 0;
     margin: 0;
+    width: 100%;
+    height: 100%;
 }
 
 #allWindow {
@@ -21,7 +24,7 @@ header, footer, aside, body, .navbar, .video-container {
 
 .video-container {
     display: inline-block;
-    margin: 2px;
+    margin: 4px;
 }
 
     .video-container:hover {
@@ -29,68 +32,68 @@ header, footer, aside, body, .navbar, .video-container {
         color: white;
     }
 
-.navbar {
-    color: darkgray;
-}
-
 /*Глобальные стили для хедеров на всём сайте*/
 header {
-    position: relative;
+    height: 150px;
     color: bisque;
     background-color: rgb(80, 10, 10);
-    padding: 10px 10px 10px 30px;
 }
+    header h1 {       
+        margin: 0;
+        margin-left: 20px;
+        padding-top: 40px;
+    }
+    header p {
+        margin: 0;
+        margin-left: 20px;
+        padding-top: 20px;
+    }
+
 
 footer {
-    bottom: 0; /*Левый нижний угол */
-    padding: 10px 10px 10px 30px; /*Поля вокруг текста*/
+    height: fit-content;
+    padding: 10px;
     font-size: medium;
     color: darkcyan;
     background-color: rgb(80, 10, 10);
-    line-height: 66%; /*межстрочный интервал*/
+    line-height: 2em; /*межстрочный интервал*/
 }
+    footer p {
+        margin:0;
+    }
 
 aside {
-    width: 20%;
+    position: absolute;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    height: 100%;
     background-color: rgb(80, 10, 10);
-    padding: 0px;
-    /*height: 100%;  Высота в полный размер. Этот параметр можно убрать, если вы хотите выставлять высоту автоматически */
-    /*position: absolute; /* Фиксированная позиция сайд-бара. Так он будет оставаться на месте при скроллинге */
-    /*z-index: 1;*/
-    top: 0; /*Сайдбар будет в самой верхней части страницы */
-    left: 0;
-    font-size: large;
 }
 
 
 #asideMain {
     position: relative;
-    width: 100%;
-    height: 100%;
-    min-height: 600px;
-    display: inline-flex;
+    display: flex;
+    height: 72%;
+    margin: 0;
+    padding: 0;
 }
 
 
 main {
-    width: 100%;
+    position: absolute;
+    display: inline-block;
     height: 100%;
+    left: 15%;
     margin: 0;
-    position: relative;
+    padding: 0;
     background-color: bisque;
     text-align: center;
-    display: inline-block;
-    width: 100%;
+    overflow-y: scroll;
 }
-/*
-.bordered {
-    position: relative;
-    background-color: bisque;
-    text-align: center;
-    display: inline-block;
-    width: 100%;
-}
-*/
+
 
 /* Стили кнопок aside */
 #navbarButton {
@@ -111,9 +114,12 @@ main {
 * {
     box-sizing: border-box;
 }
-
+#divForm {
+    background-color: #7BA7AB;
+}
 form {
     position: relative;
+    
     width: 500px;
     margin: 0 auto;
 }
