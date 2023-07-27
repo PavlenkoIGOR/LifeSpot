@@ -17,17 +17,25 @@ function HandleSession() {
     session.set("userAgent", window.navigator.userAgent);
 }
 
+
+//функция, которая предлагает юзверям подписаться 
+function SubscribeNow() {
+    setTimeout(function () { confirm("А ну-ка, подпишись!"); }, 16000);
+}
+
 //проверка возраста
-const DeclarationCheckAge = () => {
+const DeclarationCheckAge = (subscribe) => {
     // Запрос возраса пользователя и тоже сохраним
     session.set("age", prompt("Пожалуйста, введите ваш возраст?"));
-    
+
     // Проверка на возраст и сохранение сессии
     if (session.get("age") >= 18) {
         let startDate = new Date().toLocaleString();
 
         alert("Приветствуем на LifeSpot! " + '\n' + "Текущее время: " + startDate);
         document.getElementById('allWindow').style.display = 'none';
+
+        window.onload = () => subscribe(SubscribeNow());
     }
     else {
         alert("Наши трансляции не предназначены для лиц моложе 18 лет. Вы будете перенаправлены");
@@ -49,11 +57,8 @@ let sessionLog = function logSession() {
 
 
 
-//функция, которая предлагает юзверям подписаться 
-function SubscribeNow()
-{
-    setTimeout(function () { confirm("А ну-ка, подпишись!"); }, 16000 );
-}
+
+
 
 
 //функция (или объект в JS) для поиска видео
