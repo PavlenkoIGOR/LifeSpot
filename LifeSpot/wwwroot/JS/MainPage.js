@@ -18,7 +18,7 @@ function HandleSession() {
 }
 
 //проверка возраста
-function DeclarationCheckAge() {
+const DeclarationCheckAge = () => {
     // Запрос возраса пользователя и тоже сохраним
     session.set("age", prompt("Пожалуйста, введите ваш возраст?"));
     
