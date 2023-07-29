@@ -6,17 +6,13 @@
 
 
 
-// создадим объект Map для хранения сессии
-let session = new Map();
-
+// создадим объект для хранения сессии вместо new Map()
 //Сохранение данных сессии сразу при заходе пользователя на страницу
-function HandleSession() {
-    // Сохраним время начала сессии
-    session.set("startDate", new Date().toLocaleString());
-    // Сохраним UserAgent
-    session.set("userAgent", window.navigator.userAgent);
+let session = {
+    "userAge": prompt("Укажите свой возраст: "),
+    "userSet": window.navigator.userAgent,
+    "startDate": new Date().toLocaleString() 
 }
-
 
 //функция, которая предлагает юзверям подписаться 
 function SubscribeNow() {
@@ -26,13 +22,10 @@ function SubscribeNow() {
 //проверка возраста
 const DeclarationCheckAge = (subscribe) => {
     // Запрос возраса пользователя и тоже сохраним
-    session.set("age", prompt("Пожалуйста, введите ваш возраст?"));
 
     // Проверка на возраст и сохранение сессии
-    if (session.get("age") >= 18) {
-        let startDate = new Date().toLocaleString();
-
-        alert("Приветствуем на LifeSpot! " + '\n' + "Текущее время: " + startDate);
+    if (session.userAge >= 18) {
+        alert("Приветствуем на LifeSpot! " + '\n' + "Текущее время: " + `${new Date().toLocaleString()}`);
         document.getElementById('allWindow').style.display = 'none';
 
         window.onload = () => subscribe(SubscribeNow());
@@ -44,14 +37,12 @@ const DeclarationCheckAge = (subscribe) => {
     
 }
 
-
 //вывод сессии в консоль
-let sessionLog = function logSession() {
-    for (let result of session) {
-        console.log(result);
-    }
+let sessionLog = function() {
+    console.log(session.userAge);
+    console.log(session.startDate);
+    console.log(session.userSet);
 }
-
 
 
 
