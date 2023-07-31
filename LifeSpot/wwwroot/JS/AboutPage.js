@@ -1,26 +1,30 @@
 ﻿function SetComment() {
+    let UserData = {};//создается объект для хранения данных пользователя (имя и комментарий)
 
-    let userData = prompt("Введите Ваше имя: ");//запрос имени
+    UserData.userName = prompt("Введите Ваше имя: ");//запрос имени и запись в объект
+    UserData.userComment = prompt("Введите свой комментарий: "); //запрос и запись комментария в объект
 
-    let div = document.getElementById('mainCommentsField'); //выбор элекмента по классу (ролительский)
+    if ((UserData.userName != '' || UserData.userComment != '') & (UserData.userName != null || UserData.userComment != null)) {
 
-    let commentDiv = document.createElement('div'); //создание дочернего div в котором будут комментарии
-    
-    let commentDivUser = document.createElement("div"); //создание в дочернем div div'а с данными юзверя
-    let commentDivText = document.createElement("div");//создание в дочернем div div'а с текстом комментария
-    //let hrDiv = document.createElement('hr');
+        let div = document.getElementById('mainCommentsField'); //выбор элемента по классу (родительский) - поле на котором все комментарии
 
-    commentDiv.className = "commentDiv";
-    commentDivText.className = "commentDivText"; //присвоение класса div'у с текстом комментария
-    commentDivUser.className = "commentDivUser"; //присвоение класса div'у с данными юзверя
+        let commentDiv = document.createElement('div'); //создание дочернего div в котором будут комментарии
 
-    commentDivText.textContent = prompt("Введите свой комментарий: "); //запрос и запись комментария
-    commentDivUser.textContent = "Пользователь: \n" + userData;  //запись данных пользователя
+        let commentDivUser = document.createElement("div"); //создание в дочернем div div'а с данными юзверя
+        let commentDivText = document.createElement("div");//создание в дочернем div div'а с текстом комментария
 
-    
-    //commentDiv.appendChild(hrDiv);
-    commentDiv.appendChild(commentDivUser);
-    commentDiv.appendChild(commentDivText);
-    div.appendChild(commentDiv);
-    
+        commentDiv.className = "commentDiv";
+        commentDivText.className = "commentDivText"; //присвоение класса div'у с текстом комментария
+        commentDivUser.className = "commentDivUser"; //присвоение класса div'у с данными юзверя
+
+        commentDivText.textContent = UserData.userComment;
+        commentDivUser.textContent = "Пользователь: \n" + UserData.userName + "\n" + new Date().toLocaleString();  //вывод данных пользователя
+
+        commentDiv.appendChild(commentDivUser);
+        commentDiv.appendChild(commentDivText);
+        div.appendChild(commentDiv);
+    }
+    else {
+        return;
+    }
 }

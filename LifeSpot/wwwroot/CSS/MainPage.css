@@ -9,12 +9,35 @@
 
 #allWindow {
     z-index: 100;
+    color: red;
     position: absolute;
+    text-align: center;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: dimgrey;
+    background-color: black;
+}
+
+    #allWindow input {
+        
+        position: relative;
+        width: 100%;
+    }
+
+    #allWindow button {
+        position:relative;
+        margin-top: 20px;
+        position: relative;
+        width: 100%;
+    }
+
+#userCheck {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20%;
+    display: grid;
+    justify-content: center;
 }
 
 /*Комбинированный селектор - применяется ко всем элементам*/
@@ -38,11 +61,13 @@ header {
     color: bisque;
     background-color: rgb(80, 10, 10);
 }
-    header h1 {       
+
+    header h1 {
         margin: 0;
         margin-left: 20px;
         padding-top: 40px;
     }
+
     header p {
         margin: 0;
         margin-left: 20px;
@@ -52,14 +77,18 @@ header {
 
 footer {
     height: fit-content;
-    padding: 10px;
+    margin: 0;
+    padding: 5px;
+    /*padding: 10px;*/
     font-size: medium;
     color: darkcyan;
     background-color: rgb(80, 10, 10);
     line-height: 2em; /*межстрочный интервал*/
 }
+
     footer p {
-        margin:0;
+        margin: 0;
+        padding-left: 20px;
     }
 
 aside {
@@ -114,12 +143,13 @@ main {
 * {
     box-sizing: border-box;
 }
+
 #divForm {
     background-color: #7BA7AB;
 }
+
 form {
     position: relative;
-    
     width: 500px;
     margin: 0 auto;
 }

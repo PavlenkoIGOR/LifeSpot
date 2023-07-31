@@ -7,12 +7,9 @@
     <script src="../wwwroot/JS/MainPage.js" rel="script" type="text/javascript"></script>
 </head>
 
-<body onload="javascript: DeclarationCheckAge(function () { SubscribeNow(); });">
-    <div id="allWindow"></div>
+<body>
     <script>
-        //HandleSession();
-        //sessionLog();
-        SubscribeNow();
+        handleSession(logger, checker /* Коллбек-функции */);
     </script>
     <header id="headerForTest">
         <h1>Big Brother is watching!</h1>
