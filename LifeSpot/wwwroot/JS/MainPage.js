@@ -3,18 +3,20 @@
 
 /*Функции, объявленные как Function Declaration, создаются интерпретатором до выполнения кода, поэтому их можно вызвать до объявления.*/
 
-// создадим структуру данны "объект" для хранения сессии вместо new Map();
+// создадим структуру данных "объект" (шаблон let o = {};) для хранения сессии вместо let m = new Map();
 //Сохранение данных сессии сразу при заходе пользователя на страницу
 
 //применение sessionStorage  - хранит информацию только в рамках одной вкладки при обновлении страницы. При смене вкладки и перезапуске браузера информация будет потеряна.
 
 /* Проверка возраста пользователя */
 let checker = function (newVisit) {
-    if (window.sessionStorage.getItem("userAge") >= 18) {
+    if (window.sessionStorage.getItem('userAge') >= 18) {
         // Добавим проверку на первое посещение, чтобы не показывать приветствие
         // лишний раз
+        document.getElementById('allWindow').style.display = 'none';
         if (newVisit) {
             alert("Приветствуем на LifeSpot! " + '\n' + "Текущее время: " + new Date().toLocaleString());
+            
         }
     }
     else {
@@ -29,6 +31,8 @@ let logger = function () {
     console.log('Даныне клиента: ' + window.sessionStorage.getItem("userAgent"))
     console.log('Возраст пользователя: ' + window.sessionStorage.getItem("userAge"))
 }
+
+
 
 /* Сохранение данных сессии сразу при заходе пользователя на страницу*/
 function handleSession(logger, checker) {
@@ -68,13 +72,6 @@ function SubscribeNow() {
     setTimeout(function () { confirm("А ну-ка, подпишись!"); }, 16000);
     console.log("Возраст пользоватля: " + window.sessionStorage.getItem());
 }
-
-
-
-
-
-
-
 
 
 //функция (или объект в JS) для поиска видео

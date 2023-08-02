@@ -204,19 +204,24 @@ input {
     margin-right: auto;
     display: grid;
     width: 80%;
-}
-.divUserData {
-    text-align: left;
-    position: relative;
-    background-color: white;
     
 }
+.divUserData {
+    padding: 5px;
+    text-align: left;
+    position: relative;
+    background-color: white;
+    border-radius: 10px 10px 0 0;
+}
 .divCommentText {
+    padding: 5px;
     position: relative;
     text-align: left;
     background-color: white;
+    border-radius: 0 0 10px 0;
 }
 .divLikesDislikes {
+    padding: 5px;
     position: relative;
     display: flex;
 }
