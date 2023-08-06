@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@{
+   var imagePath = "";
+   if (Request["Choice"] != null){ imagePath = "Img/" + Request["Choice"]; }
+}
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,18 +17,15 @@
         <h1>Big Brother is watching! - тестовая страница</h1>
         <p>Здесь можно экспериментировать с кодом</p>
     </header>
-        <div id="searchBar">
-            <input id="inputMain" type="text" placeholder="Поиск трансляции по сайту" oninput="javascript: SeekAndShow();" size="50%" />
+    <div id="searchBar">
+        <input id="inputMain" type="text" placeholder="Поиск трансляции по сайту" oninput="javascript: SeekAndShow();" size="50%" />
 
-            <button id="searchButton" type="submit" onclick="SomethingInput()">Найти</button>
-        </div>
+        <button id="searchButton" type="submit" onclick="SomethingInput()">Найти</button>
+    </div>
     <div id="asideMain">
         <!--SIDEBAR-->
         <main>
-            <div id="divForSlider">
-                <div id="divImg"></div>>
-                <div id="divDescription"></div>>
-            </div>
+
 
         </main>
     </div>

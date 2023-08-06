@@ -87,7 +87,7 @@ aside {
 
 main {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
     height: 100%;
     left: 15%;
     width: 85%;
@@ -97,18 +97,7 @@ main {
     text-align: center;
 }
 
-.mainHeader {
-    position: absolute;
-    padding-left: 50px;
-    background-color: #7BA7AB;
-    /*ниже параметры, чтобы выровнять по центру(вертикаль)*/
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    height: 6%;
-    width: 100%;
-}
+
 /* Стили кнопок aside */
 #navbarButton {
     color: gold;
@@ -189,11 +178,31 @@ input {
 }
 /*КОНЕЦ кнопки навигации по сайту*/
 
+/*НАЧАЛО поля с комментариями*/
+#forComments {
+    position: relative;
+    width: 30%;
+    height: 100%;
+}
+.commentsHeader {
+    position: relative;
+    padding-left: 50px;
+    background-color: #7BA7AB;
+    /*ниже параметры, чтобы выровнять по центру(вертикаль)*/
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 6%;
+    width: 100%;
+}
+
 .mainCommentsField {
-    position: absolute;
-    top: 6%;
+    position: relative;
     width: 100%;
     height: 94%;
+    top: 0;
+    margin: 0;
     overflow-y: scroll;
 }
 
@@ -204,7 +213,7 @@ input {
     margin-right: auto;
     display: grid;
     width: 80%;
-    
+    word-wrap: break-word;
 }
 .divUserData {
     padding: 5px;
@@ -212,6 +221,9 @@ input {
     position: relative;
     background-color: white;
     border-radius: 10px 10px 0 0;
+    font-style: italic;
+    font-weight: bold;
+    word-wrap: break-word;
 }
 .divCommentText {
     padding: 5px;
@@ -219,11 +231,12 @@ input {
     text-align: left;
     background-color: white;
     border-radius: 0 0 10px 0;
+    word-wrap: break-word;
 }
 .divLikesDislikes {
     padding: 5px;
     position: relative;
-    display: flex;
+    display: inline-flex;
 }
 .divLikesButton {
     position: relative;
@@ -238,3 +251,28 @@ input {
 .divDislikesCount {
     width: 100px;
 }
+/*КОНЕЦ поля с комментариями*/
+
+/*Начало слайдера*/
+#divForSlider {
+    position: relative;
+    display: grid;
+    margin: 0;
+    padding: 0;
+    border: 10px solid #7BA7AB;
+    width: 70%;
+
+}
+
+#divImg {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    overflow-x:scroll;
+}
+
+#divDescription {
+    background: #7BA7AB;
+}
+/*конец слайдера*/

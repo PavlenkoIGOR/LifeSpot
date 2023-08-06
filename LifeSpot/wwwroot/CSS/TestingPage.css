@@ -206,21 +206,5 @@ input:hover {
 }
 /*КОНЕЦ кнопки навигации по сайту*/
 
-/*Начало слайдера*/
-#divForSlider {
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    border: 10px solid #7BA7AB;
-}
 
-#divImg {
-    width: 1152px;
-    height: 768px;
-}
-
-#divDescription {
-    background: #7BA7AB;
-}
-/*конец слайдера*/
 

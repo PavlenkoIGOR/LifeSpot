@@ -26,100 +26,12 @@ namespace LifeSpot
 
             app.UseRouting();
 
-            //Загружаем отдельные элементы для вставки в шаблон: боковое меню и футер. Для этого создать новые файлы (в моем случае MainPageFooter и  MainPageSidebar)
-            string footerHTML = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "Footer.html"));
-            string sidebarHTML = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "Sidebar.html"));
-            string sidebarTestingPage = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "SidebarTestingPage.html"));
-            string sidebarAboutPage = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "SidebarAboutPage.html"));
-
             app.UseEndpoints(endpoints =>
                 {
-                //подключается стартовая страница
-                    endpoints.MapGet("/", async context => //MapGet() - это Конечная точка — это то, что можно:
-                                                           //-выбрать путем сопоставления URL-адреса и метода HTTP
-                                                           //-выполнить путем запуска делегата.
-                    {
-                        var viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "MainPage.html");
-                        var html = new StringBuilder(await File.ReadAllTextAsync(viewPath)).Replace("<!--SIDEBAR-->", sidebarHTML).Replace("<!--FOOTER-->", footerHTML);
-                        
-                        // Загружаем шаблон страницы, вставляя в него элементы
-                        await context.Response.WriteAsync(html.ToString());
-                    });
-
-                    
-                    //подключается страница TestingPage
-                    endpoints.MapGet("/Views/TestingPage.html", async context => 
-                    {
-                        var TestingPagePath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "TestingPage.html"); 
-                        var TestingPageHtml = new StringBuilder(await File.ReadAllTextAsync(TestingPagePath)).Replace("<!--SIDEBAR-->", sidebarTestingPage).Replace("<!--FOOTER-->", footerHTML);
-
-                        // Загружаем шаблон страницы, вставляя в него элементы
-                        await context.Response.WriteAsync(TestingPageHtml.ToString());
-                    });
-
-                    //подключается страница AboutPage
-                    endpoints.MapGet("/Views/AboutPage.html", async context =>
-                    {
-                        var AboutPagePath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "AboutPage.html");
-                        var AboutPageHtml = new StringBuilder(await File.ReadAllTextAsync(AboutPagePath)).Replace("<!--SIDEBAR-->", sidebarAboutPage).Replace("<!--FOOTER-->", footerHTML);
-
-                        // Загружаем шаблон страницы, вставляя в него элементы
-                        await context.Response.WriteAsync(AboutPageHtml.ToString());
-                    });
-
-                    //для подключения стилей MainPage
-                    endpoints.MapGet("/wwwroot/CSS/MainPage.css", async context =>
-                    {
-                    // по аналогии со страницей Index настроим на нашем сервере путь до страницы со стилями, чтобы браузер знал, откуда их загружать
-                        var cssPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "CSS", "MainPage.css");
-                        var css = await File.ReadAllTextAsync(cssPath);
-                        await context.Response.WriteAsync(css);
-                    });
-
-
-                    //подключение CSS стилей TestingPage
-                    endpoints.MapGet("/wwwroot/CSS/TestingPage.css", async context =>
-                    {
-                        // по аналогии со страницей Index настроим на нашем сервере путь до страницы со стилями, чтобы браузер знал, откуда их загружать
-                        var cssPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "CSS", "TestingPage.css");
-                        var css = await File.ReadAllTextAsync(cssPath);
-                        await context.Response.WriteAsync(css);
-                    });
-
-                    //подключение CSS стилей AboutPage
-                    endpoints.MapGet("/wwwroot/CSS/AboutPage.css", async context =>
-                    {
-                        // по аналогии со страницей Index настроим на нашем сервере путь до страницы со стилями, чтобы браузер знал, откуда их загружать
-                        var cssPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "CSS", "AboutPage.css");
-                        var css = await File.ReadAllTextAsync(cssPath);
-                        await context.Response.WriteAsync(css);
-                    });
-
-                    //для подключения JS-файла MainPage
-                    endpoints.MapGet("/wwwroot/JS/MainPage.js", async context =>
-                    {
-                    // по аналогии со страницей Index настроим на нашем сервере путь до страницы со стилями, чтобы браузер знал, откуда их загружать
-                        var jsPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "JS", "MainPage.js");
-                        var js = await File.ReadAllTextAsync(jsPath);
-                        await context.Response.WriteAsync(js);
-                    });
-
-                    //для подключения JS-файла TestingPage
-                    endpoints.MapGet("/wwwroot/JS/TestingPage.js", async context =>
-                    {
-                        // по аналогии со страницей Index настроим на нашем сервере путь до страницы со стилями, чтобы браузер знал, откуда их загружать
-                        var jsPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "JS", "TestingPage.js");
-                        var js = await File.ReadAllTextAsync(jsPath);
-                        await context.Response.WriteAsync(js);
-                    });
-                    //для подключения JS-файла AboutPage
-                    endpoints.MapGet("/wwwroot/JS/AboutPage.js", async context =>
-                    {
-                        // по аналогии со страницей Index настроим на нашем сервере путь до страницы со стилями, чтобы браузер знал, откуда их загружать
-                        var jsPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "JS", "AboutPage.js");
-                        var js = await File.ReadAllTextAsync(jsPath);
-                        await context.Response.WriteAsync(js);
-                    });
+                    endpoints.MapHTML();
+                    endpoints.MapCss();
+                    endpoints.MapJS();  
+                    endpoints.MapIMG();
                 });
         }
     }
