@@ -19,6 +19,7 @@
     </div-->
     <script>
         handleSession(logger, checker /* Коллбек-функции */);
+        
     </script>
     <header id="headerForTest">
         <h1>Big Brother is watching!</h1>
@@ -30,6 +31,7 @@
                 const day = date.getDate();
                 const currentDate = day + "." + month + "." + year;
                 document.getElementById("headerP").innerHTML = `Покажем, что происходит прямо сейчас! А на календаре у нас ${currentDate}`;
+                S();
             </script>
         </p>
     </header>

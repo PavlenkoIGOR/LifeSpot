@@ -13,7 +13,7 @@ let checker = function (newVisit) {
     if (window.sessionStorage.getItem('userAge') >= 18) {
         // Добавим проверку на первое посещение, чтобы не показывать приветствие
         // лишний раз
-        document.getElementById('allWindow').style.display = 'none';
+        //document.getElementById('allWindow').style.display = 'none';
         if (newVisit) {
             alert("Приветствуем на LifeSpot! " + '\n' + "Текущее время: " + new Date().toLocaleString());
             
@@ -97,3 +97,6 @@ function SeekAndShow() {
         }
     }
 }
+
+
+

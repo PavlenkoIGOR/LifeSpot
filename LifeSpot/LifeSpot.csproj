@@ -8,4 +8,8 @@
       <None Include="wwwroot\CSS\MainPage.css" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="wwwroot\Img\" />
+    </ItemGroup>
+
 </Project>

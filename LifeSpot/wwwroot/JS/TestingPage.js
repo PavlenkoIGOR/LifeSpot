@@ -18,3 +18,4 @@ const SomethingInput = function () {
     // Сохраним новое значение в контекст
     this.lastInput = currentInput;
 }
+
