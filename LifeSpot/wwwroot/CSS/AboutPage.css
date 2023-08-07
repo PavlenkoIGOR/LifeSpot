@@ -263,16 +263,52 @@ input {
     width: 70%;
 
 }
+#buttonsAndImgDiv {
+    position:absolute;
+    display: inline-flex;
+    width: 100%;
+    height: 80%;
+    text-align: center;
+}
 
-#divImg {
+
+    #buttonsAndImgDiv buttonPreviousDiv, buttonNextDiv {
+        width: 20%;
+    }
+
+#previousButton, #nextButton {
+    width: 100%;
+}
+
+#buttonPreviousDiv, #buttonNextDiv {
     display: flex;
     text-align: center;
     justify-content: center;
     align-items: center;
-    overflow-x:scroll;
+    width: 10%;
+}
+
+#divImg {
+    width: 600px;
+    height: 400px;
+    position: relative;
+    display: inline-flex;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img {
+    position: relative;
+    display: inline-flex;
+    transition: all 0.5s ease-in-out;
 }
 
 #divDescription {
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    top: 80%;
     background: #7BA7AB;
 }
 /*конец слайдера*/

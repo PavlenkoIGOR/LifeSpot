@@ -104,7 +104,7 @@ const CreateRateComment = (review) => {
 
             div.appendChild(divCommentDataLikes);
         }
-        else {           
+        else {
             let div = document.getElementById('mainCommentsField'); //выбор элемента по классу (родительский) - поле на котором все комментарии
 
             let divCommentDataLikes = document.createElement('div'); //создание дочернего div в котором будут поле с [комментарии, данные] и поле с [кнопки и счетчики]
@@ -121,14 +121,43 @@ const CreateRateComment = (review) => {
 
             divCommentDataLikes.appendChild(divUserData);
             divCommentDataLikes.appendChild(divCommentText);
-            
 
-            div.appendChild(divCommentDataLikes); 
+
+            div.appendChild(divCommentDataLikes);
         }
     }
-    else
-    {
+    else {
         return;
     }
 
 }
+
+
+
+//////////////////////////////////////////////
+//в первый раз, объявляется функция, которая добавляет события клика,
+//а во второй раз, они уже отрабатывают. нужно функцию вызвать сначала
+//1. Объявление функции.
+//2. Вызов функции.
+//3. Добавление событий к элементам внутри функции.
+//4. Клик по кнопке и получение желаемого результата.
+////////////////////////////////////////////////
+
+//функция слайдера
+
+const nxtbttn = document.getElementById('nextButton');
+nxtbttn.addEventListener("click", () => {
+    document.getElementById('k1').style.translate = '90%';
+    });
+
+//const nxtbttn = document.getElementById('nextButton');
+//function Slider() {
+//    nxtbttn.addEventListener("click", () => {
+//        document.getElementById('k1').style.left = '150px';
+//    });
+//}
+//Slider()
+
+
+const prvbttn = document.getElementById('previousButton');
+prvbttn.addEventListener('click', () => { document.getElementById('k1').style.translate = '-90%'; })
