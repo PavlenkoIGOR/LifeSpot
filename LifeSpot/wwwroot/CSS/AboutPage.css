@@ -263,7 +263,7 @@ input {
     display: grid;
     margin: 0;
     padding: 0;
-    border: 10px solid #7BA7AB;
+    /*border: 10px solid #7BA7AB;*/
     width: 70%;
 }
 
@@ -282,22 +282,25 @@ input {
 
 #previousButton, #nextButton {
     width: 100%;
+    height: 100px;
+    background-color: #7BA7AB;
+    border: none;
 }
 
 #buttonPreviousDiv, #buttonNextDiv {
-    position: absolute;
+    position: relative;
     display: flex;
     text-align: center;
     justify-content: center;
     align-items: center;
     width: 10%;
     word-wrap: break-word;
-    justify-content: center;
-    align-items: center;
+/*    justify-content: center;
+    align-items: center;*/
 }
 
 #buttonNextDiv {
-    left: 90%;
+    left: 80%;
 }
 
 #divImg {
@@ -310,7 +313,7 @@ input {
     overflow: hidden;
     /* margin-left: auto; */
     /* margin-right: auto; */
-    border: 2px solid black;
+    border: 10px solid #7BA7AB;
     /* justify-content: center; */
     align-items: center;
     scroll-snap-type: y mandatory;

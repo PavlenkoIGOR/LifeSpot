@@ -45,7 +45,14 @@ namespace LifeSpot
         //для подключения изображений
         public static void MapIMG(this IEndpointRouteBuilder routeBuilder)
         {
-            var imgFilesArr = new[] { "alone_human_in_neoncity_Kandinsky_2.1.jpg", "neoncity lamborghini_Kandinsky_2.1.jpg", "neoncity_Kandinsky_2.1.jpg", "neoncity_lamborghini_Kandinsky_2.1(1).jpg", "retrowave_city_Kandinsky_2.1.jpg" };
+            var imgFilesArr = new[] { 
+                "alone_human_in_neoncity_Kandinsky_2.1.jpg",
+                "neoncity lamborghini_Kandinsky_2.1.jpg",
+                "neoncity_Kandinsky_2.1.jpg",
+                "neoncity_lamborghini_Kandinsky_2.1(1).jpg",
+                "retrowave_city_Kandinsky_2.1.jpg",
+                "move throu the neoncity_Kandinsky 2.1.jpg" };
+
             foreach (var imgFile in imgFilesArr)
             {
                 routeBuilder.MapGet($"wwwroot/Img/{imgFile}", async images =>
