@@ -1,4 +1,8 @@
-﻿body {
+﻿* {
+    margin: 0;
+}
+
+body {
     position: absolute;
     background-color: rgb(80, 10, 10);
     padding: 0;
@@ -261,10 +265,10 @@ input {
     padding: 0;
     border: 10px solid #7BA7AB;
     width: 70%;
-
 }
+
 #buttonsAndImgDiv {
-    position:absolute;
+    position: absolute;
     display: inline-flex;
     width: 100%;
     height: 80%;
@@ -281,27 +285,45 @@ input {
 }
 
 #buttonPreviousDiv, #buttonNextDiv {
+    position: absolute;
     display: flex;
     text-align: center;
     justify-content: center;
     align-items: center;
     width: 10%;
+    word-wrap: break-word;
+    justify-content: center;
+    align-items: center;
+}
+
+#buttonNextDiv {
+    left: 90%;
 }
 
 #divImg {
-    width: 600px;
-    height: 400px;
-    position: relative;
-    display: inline-flex;
+    width: 80%;
+    height: 100%;
+    position: absolute;
+    left: 10%;
+    display: flex;
+    flex-shrink: 0;
     overflow: hidden;
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    border: 2px solid black;
+    /* justify-content: center; */
+    align-items: center;
+    scroll-snap-type: y mandatory;
 }
 
 img {
+    width: 100%;
+    height: auto;
     position: relative;
     display: inline-flex;
     transition: all 0.5s ease-in-out;
+    flex-shrink: 0;
+    scroll-snap-align: start;
 }
 
 #divDescription {

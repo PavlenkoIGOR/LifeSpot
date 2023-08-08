@@ -145,10 +145,10 @@ const CreateRateComment = (review) => {
 
 //функция слайдера
 
-const nxtbttn = document.getElementById('nextButton');
-nxtbttn.addEventListener("click", () => {
-    document.getElementById('k1').style.translate = '90%';
-    });
+//const nxtbttn = document.getElementById('nextButton');
+//nxtbttn.addEventListener("click", () => {
+//    document.getElementById('k1').style.translate = '90%';
+//    });
 
 //const nxtbttn = document.getElementById('nextButton');
 //function Slider() {
@@ -159,5 +159,72 @@ nxtbttn.addEventListener("click", () => {
 //Slider()
 
 
+//const prvbttn = document.getElementById('previousButton');
+//prvbttn.addEventListener('click', () => { document.getElementById('k1').style.translate = '-90%'; })
+
+
+var divImg = document.getElementById('divImg');
+var pics = document.getElementsByTagName('img');
+
+
+const nxtbttn = document.getElementById('nextButton');
 const prvbttn = document.getElementById('previousButton');
-prvbttn.addEventListener('click', () => { document.getElementById('k1').style.translate = '-90%'; })
+var n = 1;
+var p = 1;
+var currentIndex = 1;
+nxtbttn.addEventListener('click', () => {
+    for (let i = 0; i < pics.length; i++) {
+        pics[i].style.translate = `-${n}00%`; //-хе-хе
+
+        //возврат в исходную точку
+        if (n >= pics.length) {
+            n = 0;
+            p = 2;
+            for (let i = 0; i < pics.length; i++) {
+                pics[i].style.translate = `0%`;
+            }
+        }
+    }
+    n++;
+    p--;
+    console.log("p: " + p);
+    console.log("n: " + n);
+    console.log("Элементов: " + pics.length);
+});
+
+
+//перетаскивание мышью
+for (let i = 0; i < pics.length; i++) {
+    pics[i].addEventListener('mousedown', (event) => {
+        event.preventDefault(); //запрет выделения объекта браузером
+        for (let i = 0; i < pics.length; i++) {
+            pics[i].style.translate = `-${n}00%`;
+        }
+        n++;
+        p--;
+    });
+}
+
+
+prvbttn.addEventListener('click', () => {
+    if (p != 1) {
+        for (let i = 0; i < pics.length; i++) {
+            pics[i].style.translate = `${p}00%`;
+        }
+        console.log("p!=1");
+    }
+    if (p == 1) {
+        p = (-1) * (pics.length - 1);     
+        n = pics.length+1;      
+        for (let i = 0; i < pics.length; i++) {
+            pics[i].style.translate = `-${pics.length-1}00%`;
+        }
+        console.log("p==1");
+
+    }
+
+    p++;
+    n--;
+    console.log("p: " + p);
+    console.log("n: " + n);
+});
