@@ -171,20 +171,36 @@ const nxtbttn = document.getElementById('nextButton');
 const prvbttn = document.getElementById('previousButton');
 var n = 1;
 var p = 1;
-var currentIndex = 1;
-nxtbttn.addEventListener('click', () => {
-    for (let i = 0; i < pics.length; i++) {
-        pics[i].style.translate = `-${n}00%`; //-хе-хе
+var currentIndex = 0;
+if (currentIndex == 0) {
+    prvbttn.textContent = '';
+}
 
-        //возврат в исходную точку
-        if (n >= pics.length) {
-            n = 0;
-            p = 2;
-            for (let i = 0; i < pics.length; i++) {
-                pics[i].style.translate = `0%`;
-            }
+nxtbttn.addEventListener('click', () => {
+    prvbttn.textContent = 'Previous';
+    if (currentIndex < pics.length - 1) {
+        for (let i = 0; i < pics.length; i++) {
+            pics[i].style.translate = `-${n}00%`; //-хе-хе
+
+            // //возврат в исходную точку
+            // if (n >= pics.length) {
+            // n = 0;
+            // p = 2;
+            // for (let i = 0; i < pics.length; i++) {
+            // pics[i].style.translate = `0%`;
+            // }
+            // }
         }
     }
+    else {
+        nxtbttn.textContent = '';
+        return;
+    }
+    currentIndex++;
+    if (currentIndex == pics.length - 1) {
+        nxtbttn.textContent = '';
+    }
+
     n++;
     p--;
     console.log("p: " + p);
@@ -194,37 +210,84 @@ nxtbttn.addEventListener('click', () => {
 
 
 //перетаскивание мышью
+//for (let i = 0; i < pics.length; i++) {
+//    pics[i].addEventListener('mousedown', (event) => {
+//        event.preventDefault(); //запрет выделения объекта браузером
+
+
+//        for (let i = 0; i < pics.length; i++) {
+//            pics[i].style.translate = `-${n}00%`;
+//        }
+//        n++;
+//        p--;
+//    });
+//}
+
 for (let i = 0; i < pics.length; i++) {
     pics[i].addEventListener('mousedown', (event) => {
-        event.preventDefault(); //запрет выделения объекта браузером
-        for (let i = 0; i < pics.length; i++) {
-            pics[i].style.translate = `-${n}00%`;
+        event.preventDefault();
+
+
+        let shiftX = event.clientX;
+
+
+        moveAt(event.pageX);
+
+        // переносит мяч на координаты (pageX, pageY),
+        // дополнительно учитывая изначальный сдвиг относительно указателя мыши
+        function moveAt(pageX) {
+            pics[i].style.translate = pageX - shiftX + 'px';
         }
-        n++;
-        p--;
+
+        function onMouseMove(event) {
+            moveAt(event.pageX);
+        }
+
+        // передвигаем мяч при событии mousemove
+        document.addEventListener('mousemove', onMouseMove);
+
+        // отпустить мяч, удалить ненужные обработчики
+        pics[i].onmouseup = function () {
+            document.removeEventListener('mousemove', onMouseMove);
+            pics[i].onmouseup = null;
+        };
+
     });
 }
 
 
+
+
+
+
+
 prvbttn.addEventListener('click', () => {
+    nxtbttn.textContent = 'Next';
     if (p != 1) {
         for (let i = 0; i < pics.length; i++) {
             pics[i].style.translate = `${p}00%`;
         }
+
         console.log("p!=1");
     }
     if (p == 1) {
-        p = (-1) * (pics.length - 1);     
-        n = pics.length+1;      
-        for (let i = 0; i < pics.length; i++) {
-            pics[i].style.translate = `-${pics.length-1}00%`;
-        }
-        console.log("p==1");
-
+        prvbttn.textContent = '';
+        // //возврат в конец точку
+        // p = (-1) * (pics.length - 1);
+        // n = pics.length + 1;
+        // for (let i = 0; i < pics.length; i++) {
+        // pics[i].style.translate = `-${pics.length - 1}00%`;
+        // }
+        // console.log("p==1");
+        return;
     }
-
+    currentIndex--;
+    if (currentIndex == 0) {
+        prvbttn.textContent = '';
+    }
     p++;
     n--;
+
     console.log("p: " + p);
     console.log("n: " + n);
 });
