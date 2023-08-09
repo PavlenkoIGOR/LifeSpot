@@ -1,4 +1,85 @@
-﻿function SetComment() {
+﻿var divImg = document.getElementById('divImg');
+var pics = document.getElementsByTagName('img');
+const nxtbttn = document.getElementById('nextButton');
+const prvbttn = document.getElementById('previousButton');
+var n = 1;
+var p = 1;
+var currentIndex = 0;
+if (currentIndex == 0) {
+    prvbttn.textContent = '';
+}
+
+nxtbttn.addEventListener('click', NextSlide);  //слайд вперёд
+prvbttn.addEventListener('click', PreviousSlide); //слайд назад
+
+//функция пролистывания назад
+function PreviousSlide() {
+    nxtbttn.textContent = 'Next';
+    if (p != 1) {
+        for (let i = 0; i < pics.length; i++) {
+            pics[i].style.translate = `${p}00%`;
+        }
+
+        console.log("p!=1");
+    }
+    if (p == 1) {
+        prvbttn.textContent = '';
+        // //возврат в конец точку
+        // p = (-1) * (pics.length - 1);
+        // n = pics.length + 1;
+        // for (let i = 0; i < pics.length; i++) {
+        // pics[i].style.translate = `-${pics.length - 1}00%`;
+        // }
+        // console.log("p==1");
+        return;
+    }
+    currentIndex--;
+    if (currentIndex == 0) {
+        prvbttn.textContent = '';
+    }
+    p++;
+    n--;
+
+    console.log("p: " + p);
+    console.log("n: " + n);
+}
+
+//функция для показа следующего слайда
+function NextSlide() {
+    prvbttn.textContent = 'Previous';
+    if (currentIndex < pics.length - 1) {
+        for (let i = 0; i < pics.length; i++) {
+            pics[i].style.translate = `-${n}00%`; //-хе-хе
+
+            // //возврат в исходную точку
+            // if (n >= pics.length) {
+            // n = 0;
+            // p = 2;
+            // for (let i = 0; i < pics.length; i++) {
+            // pics[i].style.translate = `0%`;
+            // }
+            // }
+        }
+    }
+    else {
+        nxtbttn.textContent = '';
+        return;
+    }
+    currentIndex++;
+    if (currentIndex == pics.length - 1) {
+        nxtbttn.textContent = '';
+    }
+
+    n++;
+    p--;
+    console.log("p: " + p);
+    console.log("n: " + n);
+    console.log("Элементов: " + pics.length);
+}
+
+
+//функция для оставления комментариев
+function SetComment() {
 
     let UserData = {};//создается объект для хранения данных пользователя (имя и комментарий) (да, ради прикола)
     UserData.userName = prompt("Введите Ваше имя: ");//запрос имени и запись в объект
@@ -163,50 +244,9 @@ const CreateRateComment = (review) => {
 //prvbttn.addEventListener('click', () => { document.getElementById('k1').style.translate = '-90%'; })
 
 
-var divImg = document.getElementById('divImg');
-var pics = document.getElementsByTagName('img');
 
 
-const nxtbttn = document.getElementById('nextButton');
-const prvbttn = document.getElementById('previousButton');
-var n = 1;
-var p = 1;
-var currentIndex = 0;
-if (currentIndex == 0) {
-    prvbttn.textContent = '';
-}
 
-nxtbttn.addEventListener('click', () => {
-    prvbttn.textContent = 'Previous';
-    if (currentIndex < pics.length - 1) {
-        for (let i = 0; i < pics.length; i++) {
-            pics[i].style.translate = `-${n}00%`; //-хе-хе
-
-            // //возврат в исходную точку
-            // if (n >= pics.length) {
-            // n = 0;
-            // p = 2;
-            // for (let i = 0; i < pics.length; i++) {
-            // pics[i].style.translate = `0%`;
-            // }
-            // }
-        }
-    }
-    else {
-        nxtbttn.textContent = '';
-        return;
-    }
-    currentIndex++;
-    if (currentIndex == pics.length - 1) {
-        nxtbttn.textContent = '';
-    }
-
-    n++;
-    p--;
-    console.log("p: " + p);
-    console.log("n: " + n);
-    console.log("Элементов: " + pics.length);
-});
 
 
 //перетаскивание мышью
@@ -223,6 +263,8 @@ nxtbttn.addEventListener('click', () => {
 //    });
 //}
 
+/*
+//пока не работает
 for (let i = 0; i < pics.length; i++) {
     pics[i].addEventListener('mousedown', (event) => {
         event.preventDefault();
@@ -233,20 +275,22 @@ for (let i = 0; i < pics.length; i++) {
 
         moveAt(event.pageX);
 
-        // переносит мяч на координаты (pageX, pageY),
+        // переносит картинку на координаты (pageX, pageY),
         // дополнительно учитывая изначальный сдвиг относительно указателя мыши
         function moveAt(pageX) {
-            pics[i].style.translate = pageX - shiftX + 'px';
+            for (let i = 0; i < pics.length; i++) {
+                pics[i].style.translate = pageX - shiftX + 'px';
+            }
         }
 
         function onMouseMove(event) {
             moveAt(event.pageX);
         }
 
-        // передвигаем мяч при событии mousemove
+        // передвигаем слайды при событии mousemove
         document.addEventListener('mousemove', onMouseMove);
 
-        // отпустить мяч, удалить ненужные обработчики
+        // отпустить слайд, удалить ненужные обработчики
         pics[i].onmouseup = function () {
             document.removeEventListener('mousemove', onMouseMove);
             pics[i].onmouseup = null;
@@ -254,6 +298,7 @@ for (let i = 0; i < pics.length; i++) {
 
     });
 }
+*/
 
 
 
@@ -261,33 +306,3 @@ for (let i = 0; i < pics.length; i++) {
 
 
 
-prvbttn.addEventListener('click', () => {
-    nxtbttn.textContent = 'Next';
-    if (p != 1) {
-        for (let i = 0; i < pics.length; i++) {
-            pics[i].style.translate = `${p}00%`;
-        }
-
-        console.log("p!=1");
-    }
-    if (p == 1) {
-        prvbttn.textContent = '';
-        // //возврат в конец точку
-        // p = (-1) * (pics.length - 1);
-        // n = pics.length + 1;
-        // for (let i = 0; i < pics.length; i++) {
-        // pics[i].style.translate = `-${pics.length - 1}00%`;
-        // }
-        // console.log("p==1");
-        return;
-    }
-    currentIndex--;
-    if (currentIndex == 0) {
-        prvbttn.textContent = '';
-    }
-    p++;
-    n--;
-
-    console.log("p: " + p);
-    console.log("n: " + n);
-});
