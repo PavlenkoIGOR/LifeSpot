@@ -14,7 +14,7 @@ prvbttn.addEventListener('click', PreviousSlide); //слайд назад
 
 //функция пролистывания назад
 function PreviousSlide() {
-    nxtbttn.textContent = 'Туда';
+    nxtbttn.textContent = '>';
     if (p != 1) {
         for (let i = 0; i < pics.length; i++) {
             pics[i].style.translate = `${p}00%`;
@@ -46,7 +46,7 @@ function PreviousSlide() {
 
 //функция для показа следующего слайда
 function NextSlide() {
-    prvbttn.textContent = 'Сюда';
+    prvbttn.textContent = '<';
     if (currentIndex < pics.length - 1) {
         for (let i = 0; i < pics.length; i++) {
             pics[i].style.translate = `-${n}00%`; //-хе-хе

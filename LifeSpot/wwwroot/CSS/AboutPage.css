@@ -240,7 +240,7 @@ input {
 .divLikesDislikes {
     padding: 5px;
     position: relative;
-    display: inline-flex;
+    /*display: inline-flex;*/
 }
 .divLikesButton {
     position: relative;
@@ -286,6 +286,9 @@ input {
     background-color: #7BA7AB;
     border: none;
     font-family: 'Arial Black', Gadget, sans-serif;
+    color: white;
+    font-size: 140%;
+    text-shadow: 2px 0 2px #000, 0 2px 2px blue, -2px 0 2px #000, 0 -2px 2px pink;
 }
 
 #buttonPreviousDiv, #buttonNextDiv {
@@ -317,17 +320,21 @@ input {
     border: 10px solid #7BA7AB;
     /* justify-content: center; */
     align-items: center;
-    scroll-snap-type: y mandatory;
+    /*scroll-snap-type: y mandatory;*/
+}
+#imgsDiv {
+    position: absolute;
+    display: inline-flex;
+    transition: all 0.5s ease-in-out;
 }
 
 img {
     width: 100%;
     height: auto;
     position: relative;
-    display: inline-flex;
-    transition: all 0.5s ease-in-out;
+    
     flex-shrink: 0;
-    scroll-snap-align: start;
+    /*scroll-snap-align: start;*/
 }
 
 #divDescription {
