@@ -13,7 +13,7 @@ namespace LifeSpot
     {
 
         //для подключения CSS-файлов
-        public static void MapCss(this IEndpointRouteBuilder routeBuilder) //так делается метод расширения (через 'this')
+        public static void MapCss(this IEndpointRouteBuilder routeBuilder)
         {
             var cssFilesArr = new[] { "AboutPage.css", "MainPage.css", "TestingPage.css" };
             foreach (var cssFile in cssFilesArr)
